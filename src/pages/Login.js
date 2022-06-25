@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 
 export default function Login({ setUser }) {
     const [name, setName] = useState()
@@ -14,22 +13,21 @@ export default function Login({ setUser }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                <p>Name</p>
-                <input type="text" onChange={e => setName(e.target.value)}/>
-            </label>
-            <label>
-                <p>Email</p>
-                <input type="text" onChange={e => setEmail(e.target.value)}/>
-            </label>
-            <div>
-                <button type="submit">Submit</button>
-            </div>
-        </form>
+        <div>
+            <h1>Please login</h1>
+            <form onSubmit={() => handleSubmit()}>
+                <label>
+                    <p>Name</p>
+                    <input type="text" onChange={e => setName(e.target.value)}/>
+                </label>
+                <label>
+                    <p>Email</p>
+                    <input type="text" onChange={e => setEmail(e.target.value)}/>
+                </label>
+                <div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
     );
-}
-
-Login.propTypes = {
-    setToken: PropTypes.func.isRequired
 }

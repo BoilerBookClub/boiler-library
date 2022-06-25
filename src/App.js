@@ -1,16 +1,14 @@
-import React, { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Routes, Route
-} from "react-router-dom";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Library from './pages/Library'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
+import useUser from './components/useUser'
 
 function App() {
-  const [user, setUser] = useState();
+  const [user, setUser, logout] = useUser() 
 
-  if (!user) {
+  if (user == null) {
     return <Login setUser={setUser} />
   }
 
@@ -20,7 +18,7 @@ function App() {
       <hr/>
       <Router>
         <Routes>
-          <Route path="/" element={<Library user={user}/>}/>
+          <Route path="/" element={<Library user={user} logout={logout}/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </Router>
