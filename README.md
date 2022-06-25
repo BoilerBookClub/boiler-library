@@ -27,7 +27,8 @@ The website is hosted on
 
 These do not have tracking issues or PRs yet, but if you would like to contribute they are a good place to start.
 
-- [ ] E
+- [ ] Write tests
+- [ ] Connect log in to google auth (or Purdue if possible?)
 
 ----
 ### Contributors
@@ -37,6 +38,7 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 ### Technology
 
 - React
+- create-react-app
 - Bootstrap
 
 ### Screenshots
