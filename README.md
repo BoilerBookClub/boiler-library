@@ -29,6 +29,7 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 
 - [ ] Write tests
 - [ ] Connect log in to google auth (or Purdue if possible?)
+- [ ] Update login to include discord  and other info (will have to adjust backend as well)
 
 ----
 ### Contributors
