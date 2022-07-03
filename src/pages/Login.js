@@ -36,22 +36,22 @@ export default function Login({ setUser }) {
     }
 
     return (
-        <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center" style={loginStyle}>
-            <div class="pb-3 shadow p-3 mb-5 bg-white rounded">
+        <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center" style={loginStyle}>
+            <div className="pb-3 shadow p-3 mb-5 bg-white rounded">
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Form.Group controlId="formTitle" class="text-center pb-3 font-weight-bold">
+                    <Form.Group controlId="formTitle" className="text-center pb-3 font-weight-bold">
                         <a href="https://boilerbookclub.com">
-                            <Image src={logo} circle width="70"/>
+                            <Image src={logo} width="70"/>
                         </a>
                         <h2>Sign In</h2>
                     </Form.Group>
 
-                    <Form.Group class="mb-3" controlId="formName">
+                    <Form.Group className="mb-3" controlId="formName">
                         <Form.Label>Name</Form.Label>
                         <Form.Control required type="text" placeholder="Full Name" onChange={e => setName(e.target.value)}/>
                     </Form.Group>
 
-                    <Form.Group class="mb-3" controlId="formEmail">
+                    <Form.Group className="mb-3" controlId="formEmail">
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control required type="email" placeholder="boilerbc@purdue.edu" onChange={e => setEmail(e.target.value)}/>
                         <Form.Control.Feedback type="invalid">
@@ -62,13 +62,13 @@ export default function Login({ setUser }) {
                         </Form.Text>
                     </Form.Group>
 
-                    <Form.Group class="mb-3" controlId="formMemberBox">
+                    <Form.Group className="mb-3" controlId="formMemberBox">
                         <Form.Check required feedback="You must confirm your membership before logging in." feedbackType="invalid" 
                             type="checkbox" label="Confirm you are a paid member of the Boiler Book Club"/>
                     </Form.Group>
 
-                    <div class="d-grid gap-2">
-                        <Button class="btn-primary" type="submit">Login</Button>
+                    <div className="d-grid gap-2">
+                        <Button className="btn-primary" type="submit">Login</Button>
                     </div>
                 </Form>
             </div>

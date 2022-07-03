@@ -28,8 +28,8 @@ The website is hosted on
 These do not have tracking issues or PRs yet, but if you would like to contribute they are a good place to start.
 
 - [ ] Write tests
-- [ ] Connect log in to google auth (or Purdue if possible?)
-- [ ] Update login to include discord  and other info (will have to adjust backend as well)
+- [ ] Connect log in to google auth (or Purdue if possible?) or require member only password
+- [ ] Update login to include discord and other info (will have to adjust backend as well)
 
 ----
 ### Contributors

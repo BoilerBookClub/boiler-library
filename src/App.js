@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Library from './pages/Library'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
-import useUser from './components/useUser'
+import useUser from './hooks/useUser'
 
 function App() {
   const [user, setUser, logout] = useUser() 
@@ -14,11 +14,15 @@ function App() {
 
   return (
     <div className="wrapper">
-      <h1>boiler-library</h1>
+      <div className="text-center pt-2">
+        <h1>boiler-library</h1>
+      </div>
       <hr/>
+
       <Router>
         <Routes>
-          <Route path="/" element={<Library user={user} logout={logout}/>}/>
+          <Route path="/" element={<Navigate to="/library" replace/>}/>
+          <Route path="/library/*" element={<Library user={user} logout={logout}/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
       </Router>

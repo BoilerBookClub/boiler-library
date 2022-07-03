@@ -4,7 +4,7 @@ export default function useUser() {
     const getUser = () => {
         const userJson = localStorage.getItem('user')
         const user = JSON.parse(userJson)
-        return user?.user
+        return user
     }
 
     const [user, setUser] = useState(getUser())
