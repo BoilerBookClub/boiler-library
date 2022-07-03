@@ -14,11 +14,6 @@ function App() {
 
   return (
     <div className="wrapper">
-      <div className="text-center pt-2">
-        <h1>boiler-library</h1>
-      </div>
-      <hr/>
-
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/library" replace/>}/>

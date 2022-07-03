@@ -1,0 +1,58 @@
+$sidebar-bg-color: #BB4D00;
+$sidebar-color: #FBEEE3;
+$highlight-color: #FFFFFF;
+$icon-bg-color: rgba(8, 4, 4, 0.05);
+$icon-size: 45px;
+
+@import '~react-pro-sidebar/dist/scss/styles.scss';
+
+#root {
+    height: 100%;
+}
+
+.layout {
+   display: flex;
+   height: 100%; 
+}
+
+#sidebar {
+    height: 100%;
+    position: relative;
+    display: flex;
+}
+
+#sidebar .closemenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FBEEE3;
+    border-radius: 50%;
+    font-size: 17px;
+    padding-top: 15px;
+    cursor: pointer;
+  }
+
+#sidebar .pro-sidebar {
+    height: 100vh;
+}
+
+#sidebar .pro-sidebar.collapsed {
+    width: 80px;
+    min-width: 80px;
+}
+
+.image-container {
+    display: flex;
+    height: 5vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.library-wrapper {
+    background-color: #FBEEE3;
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
