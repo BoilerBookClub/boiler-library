@@ -28,8 +28,9 @@ The website is hosted on
 These do not have tracking issues or PRs yet, but if you would like to contribute they are a good place to start.
 
 - [ ] Write tests
-- [ ] Connect log in to google auth (or Purdue if possible?) or require member only password
-- [ ] Update login to include discord and other info (will have to adjust backend as well)
+- [ ] Connect log in to google auth (or Purdue if possible?) or require member only password and discord tag
+- [ ] Programmatically retrieve book covers and other information (potentially through Google Books API)
+    - Another solution would be to have users upload covers for books they add
 
 ----
 ### Contributors

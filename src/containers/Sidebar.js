@@ -9,7 +9,7 @@ import { FiArrowLeftCircle, FiArrowRightCircle } from "react-icons/fi";
 import logo from '../assets/logo.png'
 
 
-export default function Sidebar({ logout }) {
+export default function Sidebar({ logout, toggled, handleToggleSidebar }) {
     const [collapsed, setCollapsed] = useState(true)
 
     const iconClick = () => {
@@ -18,7 +18,7 @@ export default function Sidebar({ logout }) {
 
     return (
         <div id="sidebar">
-            <ProSidebar collapsed={collapsed} breakPoint="md">
+            <ProSidebar collapsed={collapsed} breakPoint="md" toggled={toggled} onToggle={handleToggleSidebar}>
                 <SidebarHeader>
                     <div className="image-container">
                         <a href="https://boilerbookclub.com" target="_blank" rel="noreferrer">

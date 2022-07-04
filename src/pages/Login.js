@@ -40,7 +40,7 @@ export default function Login({ setUser }) {
             <div className="pb-3 shadow p-3 mb-5 bg-white rounded">
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
                     <Form.Group controlId="formTitle" className="text-center pb-3 font-weight-bold">
-                        <a href="https://boilerbookclub.com">
+                        <a href="https://boilerbookclub.com" target="_blank" rel="noreferrer">
                             <Image src={logo} width="70"/>
                         </a>
                         <h2>Sign In</h2>
@@ -68,7 +68,7 @@ export default function Login({ setUser }) {
                     </Form.Group>
 
                     <div className="d-grid gap-2">
-                        <Button className="btn-primary" type="submit">Login</Button>
+                        <Button style={{ backgroundColor: "#BB4D00", borderColor: "#FBEEE3" }} type="submit">Login</Button>
                     </div>
                 </Form>
             </div>
