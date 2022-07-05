@@ -22,9 +22,7 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 
 - [ ] Write tests
 - [ ] Connect log in to google auth (or Purdue if possible?) or require member only password and discord tag
-- [ ] Programmatically retrieve book covers and other information (potentially through Google Books API)
-    - Another solution would be to have users upload covers for books they add
-- [ ] Make searching more advanced to have tags separated by some delimiter 
+- [ ] Make searching more advanced with tags separated by some delimiter 
 
 ----
 ### Contributors

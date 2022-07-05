@@ -5,13 +5,14 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { IoReload } from 'react-icons/io5';
 
-export default function CardDisplay({getBooks, title, onClick}) {
+export default function CardDisplay({isLibrary, getBooks, onCardClick}) {
     const [books, setBooks] = useState(getBooks())
 
     const [isFetching, setIsFetching] = useState(false)
     const fetch = useCallback(async () => {
         if (isFetching) return
 
+        setBooks([])
         setIsFetching(true)
         setBooks(getBooks())        
         setIsFetching(false)
@@ -29,16 +30,16 @@ export default function CardDisplay({getBooks, title, onClick}) {
         <div>
             <InputGroup className="pb-3">
                 <Form.Control placeholder="Search..." onChange={(e) => setSearchField(e.target.value)}/>
-                <Button variant='outline-secondary' disabled={isFetching} onClick={fetch}><IoReload/></Button>
+                <Button variant='dark' disabled={isFetching} onClick={fetch}><IoReload/></Button>
             </InputGroup>
 
-            <div className='text-center pb-3'>
-                <h1>{title}</h1>
+            <div className='pb-3'>
+                <h1>{isLibrary ? "Library" : "Currently Borrowing"}</h1>
             </div>
 
             {
                 filteredBooks.map((book, i) => {
-                    return <BookCard key={i} book={book} onClick={() => onClick(book)}/>
+                    return <BookCard key={i} isLibrary={isLibrary} book={book} onClick={() => onCardClick(book)}/>
                 })
             }
         </div>

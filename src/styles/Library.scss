@@ -2,7 +2,8 @@ $sidebar-bg-color: #BB4D00;
 $sidebar-color: #FBEEE3;
 $highlight-color: #FFFFFF;
 $icon-bg-color: rgba(8, 4, 4, 0.05);
-$icon-size: 45px;
+$icon-size: 55px;
+$sidebar-collapsed-width: 92px;
 
 @import '~react-pro-sidebar/dist/scss/styles.scss';
 
@@ -17,7 +18,6 @@ $icon-size: 45px;
 }
 
 #sidebar {
-    height: 100%;
     position: relative;
     display: flex;
 }
@@ -37,11 +37,6 @@ $icon-size: 45px;
     height: 100vh;
 }
 
-#sidebar .pro-sidebar.collapsed {
-    width: 80px;
-    min-width: 80px;
-}
-
 .image-container {
     display: flex;
     height: 5vh;
@@ -55,6 +50,10 @@ $icon-size: 45px;
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+}
+
+.book-modal {
+    min-width: 35%;
 }
 
 .btn-toggle {

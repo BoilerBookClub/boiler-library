@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../containers/Sidebar'
-import LibraryInfo from '../components/LibraryInfo'
+import LibraryHome from '../components/LibraryHome'
 import CardDisplay from '../containers/CardDisplay'
 import BookModal from '../components/BookModal'
 import { Routes, Route } from 'react-router-dom'
@@ -28,6 +28,8 @@ function Library({ user, logout }) {
 
     const getLibraryBooks = () => { return sampleBooks }
     const getBorrowedBooks = () => { return sampleBooks }
+    const borrowBook = (book) => {}
+    const returnBook = (book) => {}
 
     return (
         <div className="layout">
@@ -38,16 +40,17 @@ function Library({ user, logout }) {
                     <FaBars />
                 </div>
                 <Routes>
-                    <Route path="/" element={<LibraryInfo/>}/>
+                    <Route path="/" element={<LibraryHome user={user}/>}/>
                     <Route path="/books" element={
-                        <CardDisplay getBooks={getLibraryBooks} title={"Library"} onClick={(book) => onClick(book, true)}/>}/>
+                        <CardDisplay getBooks={getLibraryBooks} isLibrary onCardClick={(book) => onClick(book, true)}/>
+                    }/>
                     <Route path="/borrowed" element={
-                        <CardDisplay getBooks={getBorrowedBooks} title={`${user['name']}: Borrowed Books`} onClick={(book) => onClick(book, false)} />
+                        <CardDisplay getBooks={getBorrowedBooks} onCardClick={(book) => onClick(book, false)} />
                     }/>
                 </Routes>
             </div>
 
-            <BookModal show={show} setShow={setShow} book={book} isLibrary={isLibrary}/>
+            <BookModal show={show} setShow={setShow} book={book} isLibrary={isLibrary} borrowBook={borrowBook} returnBook={returnBook}/>
         </div>
     );
 }
