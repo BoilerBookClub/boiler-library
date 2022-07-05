@@ -4,13 +4,6 @@ A website to host access to the [Boiler Book Club](https://boilerbookclub.com) l
 
 All developers and users are expcted to be members of the club. To join, follow directions on the main club website or discord. This project is led by Kai Tinkess, the Communication Officer of the club — contact me through email or discord for any questions.
 
-Members can:
-- [ ] Add books
-- [ ] Borrow books
-- [ ] Return books
-- [ ] Place holds
-- [ ] Renew books
-
 ## Installation
 
 1. [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
@@ -23,7 +16,7 @@ Members can:
 
 The website is hosted on 
 
-## Checklist
+## Tasks
 
 These do not have tracking issues or PRs yet, but if you would like to contribute they are a good place to start.
 
@@ -31,6 +24,7 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 - [ ] Connect log in to google auth (or Purdue if possible?) or require member only password and discord tag
 - [ ] Programmatically retrieve book covers and other information (potentially through Google Books API)
     - Another solution would be to have users upload covers for books they add
+- [ ] Make searching more advanced to have tags separated by some delimiter 
 
 ----
 ### Contributors
