@@ -4,6 +4,13 @@ A website to host access to the [Boiler Book Club](https://boilerbookclub.com) l
 
 All developers and users are expcted to be members of the club. To join, follow directions on the main club website or discord. This project is led by Kai Tinkess, the Communication Officer of the club — contact me through email or discord for any questions.
 
+Remaining items before we have a functional product:
+    - [ ] Revamp Modal screen for each book to look better and have more information
+    - [ ] Upgrade Home page to give more information about the library and profile
+    - [ ] Make the donate a book form functional and allow additions to the library
+    - [ ] Require member only password to log in
+    - [ ] Deploy at boilerlibrary.com
+
 ## Installation
 
 1. [Install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
@@ -23,6 +30,7 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 - [ ] Write tests
 - [ ] Connect log in to google auth (or Purdue if possible?) or require member only password and discord tag
 - [ ] Make searching more advanced with tags separated by some delimiter 
+- [ ] Pull more information about each book to display (description, rating, links, etc)
 
 ----
 ### Contributors
