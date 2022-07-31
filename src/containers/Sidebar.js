@@ -37,7 +37,7 @@ export default function Sidebar({ logout, toggled, handleToggleSidebar }) {
                     </Menu>
                 </SidebarContent>
                     <Menu iconShape="circle">
-                        <MenuItem icon={<BiPlusCircle/>}>Donate a Book</MenuItem> 
+                        <MenuItem icon={<BiPlusCircle/>}>Donate a Book<Link to="/library/donate"/></MenuItem> 
                     </Menu>
                 <SidebarFooter>
                     <Menu iconShape="circle">

@@ -70,6 +70,11 @@ $sidebar-collapsed-width: 92px;
     display: none;
 }
 
+.normal-text {
+    color: black;
+    text-decoration: none;
+}
+
 @media (max-width: $breakpoint-md) {
     .btn-toggle {
       display: flex;

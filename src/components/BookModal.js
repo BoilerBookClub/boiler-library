@@ -33,7 +33,7 @@ function BookModal({show, setShow, book, isLibrary, borrowBook, returnBook}) {
                     <h3>{loadingText}</h3>
                 </div>
             </Modal.Body>
-            <div className='d-flex justify-content-center align-items-center mb-4'>
+            <div className='d-flex justify-content-center align-items-center mb-4 pl-3 pr-3'>
                 {isLibrary ? 
                     <Button style={{ backgroundColor: "#BB4D00", borderColor: "#FBEEE3" }} onClick={() => borrowBook(book, setLoadingText)}>Borrow</Button> 
                     :

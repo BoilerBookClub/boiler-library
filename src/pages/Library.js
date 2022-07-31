@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from 'react';
 import Sidebar from '../containers/Sidebar'
-import LibraryHome from '../components/LibraryHome'
+import Homepage from './Homepage'
 import CardDisplay from '../containers/CardDisplay'
 import BookModal from '../components/BookModal'
+import DonateForm from '../components/DonateForm'
 import ErrorBoundary from '../components/ErrorBoundary';
+import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/LibraryDB'
 import { Routes, Route } from 'react-router-dom'
 
 import { FaBars } from 'react-icons/fa';
 
 import "../styles/Library.scss"
-
-const LIB_PATH = "http://127.0.0.1:3001"
 
 function Library({ user, logout }) {
     const [show, setShow] = useState(false)
@@ -29,33 +29,29 @@ function Library({ user, logout }) {
         setShow(true)
     }
 
-    const retrieve = useCallback(async (library) => { 
+    const retrieveBooks = useCallback(async (calledInLibrary) => { 
         if (isFetching) return
-        setIsLibrary(library)
+        setIsLibrary(calledInLibrary)
 
         setBooks([])
         setIsFetching(true)
-
-        const res = library ? await fetch(LIB_PATH + "/books")
-            : await fetch(LIB_PATH + `/borrowing?name=${user.name}&email=${user.email}`)
-        const data = await res.json() 
-
-        setBooks(data)
+        let books = (calledInLibrary) ? await retrieving() : await retrieveBorrowedBooks(user);
+        setBooks(books)
         setIsFetching(false)
     }, [isFetching, user])
 
     const borrowBook = async (book, setLoadingText) => {
         setLoadingText("Working...")
-        await fetch(LIB_PATH + `/borrowing?name=${user.name}&email=${user.email}&id=${book.id}`, { method: 'POST'})
-        await retrieve(true)
+        await borrowing(book.id, user)
+        await retrieveBooks(true)
         setShow(false)
         setLoadingText("")
     }
 
     const returnBook = async (book, setLoadingText) => {
         setLoadingText("Working...")
-        await fetch(LIB_PATH + `/returning?name=${user.name}&email=${user.email}&id=${book.id}`, { method: 'POST'})
-        await retrieve(false)
+        await returning(book.id, user)
+        await retrieveBooks(false)
         setShow(false)
         setLoadingText("")
     }
@@ -71,15 +67,16 @@ function Library({ user, logout }) {
 
                 <ErrorBoundary>
                     <Routes>
-                        <Route path="/" element={<LibraryHome user={user}/>}/>
+                        <Route path="/" element={<Homepage user={user}/>}/>
                         <Route path="/books" element={
-                            <CardDisplay retrieve={retrieve} books={books} isFetching={isFetching} 
+                            <CardDisplay retrieve={retrieveBooks} books={books} isFetching={isFetching} 
                                 library={true} onCardClick={(book) => onCardClick(book)}/>
                         }/>
                         <Route path="/borrowed" element={
-                            <CardDisplay retrieve={retrieve} books={books} isFetching={isFetching} 
+                            <CardDisplay retrieve={retrieveBooks} books={books} isFetching={isFetching} 
                                 library={false} onCardClick={(book) => onCardClick(book)} />
                         }/>
+                        <Route path="/donate" element={<DonateForm user={user}/>}/>
                     </Routes>
                 </ErrorBoundary>
             </div>
