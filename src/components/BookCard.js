@@ -1,7 +1,7 @@
 import React from 'react'
 
 const BookCard = ({book, isLibrary, onClick}) => {
-    const disabled = (book.copies - book.using.length > 0) || !isLibrary 
+    const disabled = (book.owners.length - book.using.length > 0) || !isLibrary 
 
     return (
         <div className="d-inline-block">
@@ -11,12 +11,12 @@ const BookCard = ({book, isLibrary, onClick}) => {
 
                 <p style={{ fontSize:'12px' }}>{book['genre']}</p>
                 <img alt='Cover' src={book.image} width={70} className="mb-4"/>
-                <h3>{book['title']}</h3>
-                <h6>{book['author']}</h6>
+                <h3>{book.title}</h3>
+                <h6>{book.author}</h6>
 
                 { isLibrary &&
-                    <footer className={((book.copies - book.using.length > 0) ? "text-success" : "text-danger")}>
-                        <b>Available: {book.copies - book.using.length} / {book.copies}</b>
+                    <footer className={((book.owners.length - book.using.length > 0) ? "text-success" : "text-danger")}>
+                        <b>Available: {book.owners.length - book.using.length} / {book.owners.length}</b>
                     </footer>
                 }
             </div>

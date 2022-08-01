@@ -5,7 +5,8 @@ import CardDisplay from '../containers/CardDisplay'
 import BookModal from '../components/BookModal'
 import DonateForm from '../components/DonateForm'
 import ErrorBoundary from '../components/ErrorBoundary';
-import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/LibraryDB'
+import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/Firestore'
+import { genId } from '../utils/Helpers'
 import { Routes, Route } from 'react-router-dom'
 
 import { FaBars } from 'react-icons/fa';
@@ -41,16 +42,20 @@ function Library({ user, logout }) {
     }, [isFetching, user])
 
     const borrowBook = async (book, setLoadingText) => {
-        setLoadingText("Working...")
-        await borrowing(book.id, user)
+        if (book.owners.length > book.using.length) {
+            setLoadingText("Working...")
+            await borrowing(genId(book.title), user)
+        }
         await retrieveBooks(true)
         setShow(false)
         setLoadingText("")
     }
 
     const returnBook = async (book, setLoadingText) => {
-        setLoadingText("Working...")
-        await returning(book.id, user)
+        if (book.owners.length <= book.using.length) {
+            setLoadingText("Working...")
+            await returning(genId(book.title), user)
+        }
         await retrieveBooks(false)
         setShow(false)
         setLoadingText("")

@@ -6,8 +6,9 @@ All developers and users are expcted to be members of the club. To join, follow 
 
 Remaining items before we have a functional product:
 - [ ] Revamp Modal screen for each book to look better and have more information
-- [ ] Require member only password to log in
+- [ ] Require member only password to log in or set up google auth
 - [ ] Deploy at boilerlibrary.com
+- [ ] Migrate Firestore from Testing to Prod
 
 ## Installation
 
@@ -25,10 +26,11 @@ The website is hosted on
 These do not have tracking issues or PRs yet, but if you would like to contribute they are a good place to start.
 
 - [ ] Write tests
-- [ ] Connect log in to google auth (or Purdue if possible?) or require member only password and discord tag
+- [ ] Connect log in to google or microsoft auth through firebase
 - [ ] Make searching more advanced with tags separated by some delimiter 
 - [ ] Pull more information about each book to display (description, rating, links, etc)
 - [ ] Have users verify if the cover of the book they are donating is accurate
+- [ ] Look into storing a snapshot of the data locally or creating a listener to reduce firestore requests 
 
 ----
 ### Contributors

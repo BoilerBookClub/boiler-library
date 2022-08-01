@@ -25,7 +25,6 @@ function BookModal({show, setShow, book, isLibrary, borrowBook, returnBook}) {
                         </Col>
                         <Col>
                             <p>- {book.author}<br/>- {book.genre}</p>
-                            <p>Added to the library on {book.entered}</p>
                         </Col>
                     </Row>
                 </Container>
