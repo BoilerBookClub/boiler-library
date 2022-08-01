@@ -19,7 +19,10 @@ Remaining items before we have a functional product:
 
 ## Deployment Specs
 
-The website is hosted on 
+The website is hosted using Firebase. To deploy:
+1. `firebase login`
+2. `npm build`
+3. `firebase deploy`
 
 ## Tasks
 
