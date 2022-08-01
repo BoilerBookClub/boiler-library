@@ -5,6 +5,7 @@ import CardDisplay from '../containers/CardDisplay'
 import BookModal from '../components/BookModal'
 import DonateForm from '../components/DonateForm'
 import ErrorBoundary from '../components/ErrorBoundary';
+import NotFound from './NotFound'
 import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/Firestore'
 import { genId } from '../utils/Helpers'
 import { Routes, Route } from 'react-router-dom'
@@ -82,6 +83,7 @@ function Library({ user, logout }) {
                                 library={false} onCardClick={(book) => onCardClick(book)} />
                         }/>
                         <Route path="/donate" element={<DonateForm user={user}/>}/>
+                        <Route path="*" element={<NotFound/>}/>
                     </Routes>
                 </ErrorBoundary>
             </div>

@@ -21,6 +21,7 @@ Remaining items before we have a functional product:
 
 The website is hosted using Firebase. To deploy:
 1. `firebase login`
+   1. You must login to the Boiler Book Club google account.
 2. `npm build`
 3. `firebase deploy`
 

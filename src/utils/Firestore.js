@@ -17,9 +17,9 @@ const db = getFirestore(app)
 
 export async function addBook({id, title, author, genre, image, name, email, date}) {
   let path = doc(db, "books", '' + id)
-  let exists = (await getDoc(path)).exists
+  let doesExist = (await getDoc(path)).exists()
 
-  if (exists) {
+  if (doesExist) {
     await updateDoc(path, {
       owners: arrayUnion({name, email, date})
     })
