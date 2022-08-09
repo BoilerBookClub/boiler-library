@@ -8,11 +8,15 @@ import logo from '../assets/logo.png'
 
 export function Login({ setUser }) {
     useEffect(() => {
-        auth.onAuthStateChanged((user) => {
-            setUser({
-                email: user.email
-            })
+        var unsubscribe = auth.onIdTokenChanged((e) => {
+            if (!!auth.currentUser) {
+                setUser({
+                    email: auth.currentUser.email
+                })
+            }
         });
+
+       return () => unsubscribe() 
     }, [setUser])
 
     const loginStyle = {

@@ -6,9 +6,7 @@ All developers and users are expcted to be members of the club. To join, follow 
 
 Remaining items before we have a functional product:
 - [ ] Revamp Modal screen for each book to look better and have more information
-- [ ] Require member only password to log in or set up google auth
 - [ ] Deploy at boilerlibrary.com
-- [ ] Migrate Firestore from Testing to Prod
 
 ## Installation
 
@@ -16,25 +14,27 @@ Remaining items before we have a functional product:
 1. Clone the repository
 2. `npm ci`
 4. `npm start`
+   1. Or `npm run build; firebase serve`
+
 
 ## Deployment Specs
 
 The website is hosted using Firebase. To deploy:
 1. `firebase login`
-   1. You must login to the Boiler Book Club google account.
-2. `npm build`
+   1. You must log in to the Boiler Book Club google account.
+2. `npm run build`
 3. `firebase deploy`
 
 ## Tasks
 
 These do not have tracking issues or PRs yet, but if you would like to contribute they are a good place to start.
 
-- [ ] Write tests
-- [ ] Connect log in to google or microsoft auth through firebase
-- [ ] Make searching more advanced with tags separated by some delimiter 
+- [ ] Write tests and documentation
+- [ ] Make searching more advanced with user assigned tags and delimiters
 - [ ] Pull more information about each book to display (description, rating, links, etc)
 - [ ] Have users verify if the cover of the book they are donating is accurate
 - [ ] Look into storing a snapshot of the data locally or creating a listener to reduce firestore requests 
+- [ ] Design and implement more secure data access through Firestore rules
 
 ----
 ### Contributors
@@ -45,4 +45,6 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 
 ![LoginScreen](/screenshots/loginscreen.png)
 
+![Home](/screenshots/home.png)
 
+![Library](/screenshots/library.png)

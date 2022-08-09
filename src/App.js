@@ -8,7 +8,6 @@ import 'firebaseui/dist/firebaseui.css'
 
 function App() {
   const [user, setUser] = useState() 
-  console.log(user)
 
   const logout = async () => {
     googleLogout()

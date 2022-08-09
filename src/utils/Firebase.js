@@ -19,6 +19,7 @@ const auth = getAuth(app)
 const db = getFirestore(app)
 
 var uiConfig = {
+  signInFlow: 'popup',
   signInSuccessUrl: '/library',
   signInOptions: [
     GoogleAuthProvider.PROVIDER_ID,
