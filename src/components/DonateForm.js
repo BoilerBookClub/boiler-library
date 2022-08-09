@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import { genImage, genId } from '../utils/Helpers'
-import { addBook } from '../utils/Firestore'
+import { addBook } from '../utils/Firebase'
 
 export default function DonateForm({user}) {
     const [title, setTitle] = useState("")
@@ -17,7 +17,6 @@ export default function DonateForm({user}) {
     const generate = async () => {
         let id = genId(title)
         let image = await genImage(title)
-        let name = user['name']
         let email = user['email']
         let date = new Date().toLocaleString().replace(",", "")
 
@@ -27,7 +26,6 @@ export default function DonateForm({user}) {
             author,
             genre,
             image,
-            name,
             email,
             date
         })

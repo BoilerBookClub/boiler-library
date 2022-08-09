@@ -1,6 +1,7 @@
 import { getFirestore, collection, where, query, doc, setDoc, 
   updateDoc, arrayUnion, arrayRemove, getDocs, getDoc } from "firebase/firestore"; 
 import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider } from 'firebase/auth'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAYmVmrGXIZwpJ7umua9rye0A2Us2XaKB4",
@@ -13,21 +14,34 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
+
+const auth = getAuth(app)
 const db = getFirestore(app)
 
-export async function addBook({id, title, author, genre, image, name, email, date}) {
+var uiConfig = {
+  signInSuccessUrl: '/library',
+  signInOptions: [
+    GoogleAuthProvider.PROVIDER_ID,
+  ],
+  callbacks: {
+    signInSuccessWithAuthResult: () => false,
+  },
+};
+
+export { uiConfig, auth }
+
+export async function addBook({id, title, author, genre, image, email, date}) {
   let path = doc(db, "books", '' + id)
   let doesExist = (await getDoc(path)).exists()
 
   if (doesExist) {
     await updateDoc(path, {
-      owners: arrayUnion({name, email, date})
+      owners: arrayUnion({email, date})
     })
   } else {
     await setDoc(path, {
       title, author, genre, image,
       owners: [{
-          name,
           email,
           date
         }],
@@ -42,21 +56,21 @@ export async function retrieveBooks() {
   return data
 }
 
-export async function retrieveBorrowedBooks({name, email}) {
-  const q = query(collection(db, "books"), where("using", "array-contains", {name, email}))
+export async function retrieveBorrowedBooks({email}) {
+  const q = query(collection(db, "books"), where("using", "array-contains", {email}))
   const snapshot = await getDocs(q)
   let data = snapshot.docs.map(doc => doc.data())
   return data
 }
 
-export async function borrowBook(id, {name, email}) {
+export async function borrowBook(id, {email}) {
   await updateDoc(doc(db, "books", '' + id), {
-    using: arrayUnion({name, email})
+    using: arrayUnion({email})
   })
 }
 
-export async function returnBook(id, {name, email}) {
+export async function returnBook(id, {email}) {
   await updateDoc(doc(db, "books", '' + id), {
-    using: arrayRemove({name, email})
+    using: arrayRemove({email})
   })
 }

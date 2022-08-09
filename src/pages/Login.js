@@ -1,32 +1,19 @@
-import React, { useState } from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import React, { useEffect } from 'react'
 import Image from 'react-bootstrap/Image'
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import { uiConfig, auth } from '../utils/Firebase'
 
 import background from '../assets/loginbackground.jpg'
 import logo from '../assets/logo.png'
 
-export default function Login({ setUser }) {
-    const [name, setName] = useState()
-    const [email, setEmail] = useState()
-    const [validated, setValidated] = useState(false);
-
-    const handleSubmit = e => {
-        const form = e.currentTarget
-        if (form.checkValidity() === false) {
-            e.preventDefault()
-            e.stopPropagation()
-            setValidated(true)
-
-            return
-        }
-
-        const user = {
-            name: name,
-            email: email
-        }
-        setUser(user)
-    }
+export function Login({ setUser }) {
+    useEffect(() => {
+        auth.onAuthStateChanged((user) => {
+            setUser({
+                email: user.email
+            })
+        });
+    }, [setUser])
 
     const loginStyle = {
         backgroundImage: `url(${background})`,
@@ -38,40 +25,19 @@ export default function Login({ setUser }) {
     return (
         <div className="d-flex flex-column min-vh-100 justify-content-center align-items-center" style={loginStyle}>
             <div className="pb-3 shadow p-3 mb-5 bg-white rounded">
-                <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Form.Group controlId="formTitle" className="text-center pb-3 font-weight-bold">
-                        <a href="https://boilerbookclub.com" target="_blank" rel="noreferrer">
-                            <Image src={logo} width="70"/>
-                        </a>
-                        <h2>Sign In</h2>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formName">
-                        <Form.Label>Name</Form.Label>
-                        <Form.Control required type="text" placeholder="Full Name" onChange={e => setName(e.target.value)}/>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formEmail">
-                        <Form.Label>Email Address</Form.Label>
-                        <Form.Control required type="email" placeholder="boilerbc@purdue.edu" onChange={e => setEmail(e.target.value)}/>
-                        <Form.Control.Feedback type="invalid">
-                            Please enter a valid email address.
-                        </Form.Control.Feedback>
-                        <Form.Text muted>
-                            Enter your Purdue email address.
-                        </Form.Text>
-                    </Form.Group>
-
-                    <Form.Group className="mb-3" controlId="formMemberBox">
-                        <Form.Check required feedback="You must confirm your membership before logging in." feedbackType="invalid" 
-                            type="checkbox" label="Confirm you are a paid member of the Boiler Book Club"/>
-                    </Form.Group>
-
-                    <div className="d-grid gap-2">
-                        <Button style={{ backgroundColor: "#BB4D00", borderColor: "#FBEEE3" }} type="submit">Login</Button>
-                    </div>
-                </Form>
+                <div className="text-center pb-4 mb-3 font-weight-bold">
+                    <a href="https://boilerbookclub.com" target="_blank" rel="noreferrer">
+                        <Image className="pb-3" src={logo} width="70"/>
+                    </a>
+                    <h2>Sign In</h2>
+                    <p>If you need help, ask on our discord.</p>
+                </div>
+                <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
             </div>
         </div>
     );
+}
+
+export function googleLogout() {
+    auth.signOut()
 }

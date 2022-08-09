@@ -6,7 +6,7 @@ import BookModal from '../components/BookModal'
 import DonateForm from '../components/DonateForm'
 import ErrorBoundary from '../components/ErrorBoundary';
 import NotFound from './NotFound'
-import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/Firestore'
+import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/Firebase'
 import { genId } from '../utils/Helpers'
 import { Routes, Route } from 'react-router-dom'
 

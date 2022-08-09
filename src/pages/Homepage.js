@@ -7,8 +7,9 @@ import { Link } from "react-router-dom";
 export default function Homepage({ user }) {
     return (
         <div>
-            <h1>You are logged in as {`${user['name']}`} ({`${user['email']}`}).</h1>
-            <p>Welcome to the Boiler Book Club! Our club library is located in our office at #OFFICE_LOC. You will need to physically be there to use this website.<br/> 
+            <h1>Welcome to the Boiler Book Club!</h1>
+            <h3>You are logged in as {`${user['email']}`}.</h3>
+            <p>Our club library is located in our office at #OFFICE_LOC. You will need to physically be there to use this website.<br/> 
             Anyone found using the library without making the appropriate changes digitally will be removed from the club. If you need any help, ask on the Discord.</p>
 
             <h3 className="mt-5">What would you like to do?</h3>

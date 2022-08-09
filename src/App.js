@@ -1,12 +1,21 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Library from './pages/Library'
-import Login from './pages/Login'
+import { Login, googleLogout } from './pages/Login'
 import NotFound from './pages/NotFound'
-import useUser from './hooks/useUser'
+
+import 'firebaseui/dist/firebaseui.css'
 
 function App() {
-  const [user, setUser, logout] = useUser() 
+  const [user, setUser] = useState() 
+  console.log(user)
+
+  const logout = async () => {
+    googleLogout()
+    setUser(null)
+    await new Promise(r => setTimeout(r, 1000));
+    window.location.reload()
+  }
 
   useEffect(() => { 
     document.body.style.backgroundColor = '#FBEEE3' 
