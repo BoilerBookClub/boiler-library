@@ -31,6 +31,13 @@ var uiConfig = {
 
 export { uiConfig, auth }
 
+export async function getMembersOnlyPassword() {
+  let path = doc(db, "club", "password")
+  const snapshot = await getDoc(path)
+  let password = snapshot.data()['member']
+  return password
+}
+
 export async function addBook({id, title, author, genre, image, email, date}) {
   let path = doc(db, "books", '' + id)
   let doesExist = (await getDoc(path)).exists()
