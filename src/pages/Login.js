@@ -53,7 +53,7 @@ export function Login({ setUser }) {
                 <div className="text-center pb-4">
                     <h4>Member Only Password</h4>
                     <p>You can find this in pinned in the #members-only channel on discord.</p>
-                    <FormControl type="text" onChange={(e) => checkPassword(e.target.value)}/>
+                    <FormControl type="password" onChange={(e) => checkPassword(e.target.value)}/>
                 </div>
                 { isMember &&
                     <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
