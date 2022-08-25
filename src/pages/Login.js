@@ -8,6 +8,7 @@ import background from '../assets/loginbackground.jpg'
 import logo from '../assets/logo.png'
 import { FormControl } from 'react-bootstrap';
 
+
 export function Login({ setUser }) {
     const [isMember, setIsMember] = useState(false)
     const [password, setPassword] = useState('')
