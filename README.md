@@ -36,6 +36,7 @@ These do not have tracking issues or PRs yet, but if you would like to contribut
 ### Contributors
 
 - Kai Tinkess
+- Jack Moffat
 
 ### Screenshots
 
