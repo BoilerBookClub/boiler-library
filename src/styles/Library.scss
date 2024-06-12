@@ -1,4 +1,4 @@
-$sidebar-bg-color: #BB4D00;
+$sidebar-bg-color: #656565;
 $sidebar-color: #FBEEE3;
 $highlight-color: #FFFFFF;
 $icon-bg-color: rgba(8, 4, 4, 0.05);
@@ -12,7 +12,7 @@ $sidebar-collapsed-width: 92px;
 }
 
 .layout {
-   background-color: #FBEEE3;
+   background-color: #ececec;
    display: flex;
    height: 100%; 
 }
@@ -55,14 +55,14 @@ $sidebar-collapsed-width: 92px;
 }
 
 .book-modal {
-    min-width: 35%;
+    min-width: 0%;
 }
 
 .btn-toggle {
     cursor: pointer;
     width: 35px;
     height: 35px;
-    background: #BB4D00;
+    background: #605d5c;
     color: #FBEEE3;
     text-align: center;
     border-radius: 50%;

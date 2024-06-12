@@ -5,18 +5,20 @@ const BookCard = ({book, isLibrary, onClick}) => {
 
     return (
         <div className="d-inline-block">
-            <div style = {{ backgroundColor: (disabled) ? "#FFFFFF" : "#f0eae4" }} 
-                className={"text-center p-3 m-2 rounded border bw2 shadow h-75 " + (disabled ? "grow" : "")} 
+            <div style = {{ backgroundColor: disabled ? "rgb(250, 250, 250)" : "#f0eae4" }} 
+                className={"text-left p-3 m-3 rounded-4 bw2 shadow h-75 " + (disabled ? "grow" : "")}
                 onClick={() => disabled && onClick()}>
 
-                <p style={{ fontSize:'12px' }}>{book['genre']}</p>
-                <img alt='Cover' src={book.image} width={70} className="mb-4"/>
-                <h3>{book.title}</h3>
-                <h6>{book.author}</h6>
+                
+                <div className="text-center mb-4" ><img alt='Cover' src={book.image} width={150} className={"shadow"}/></div>
+                <p style={{ fontSize:'12px', backgroundColor: "#8ac5ed", marginTop: '-15px', marginBottom: '5px' }} className={"text-center p-1 rounded-4 bw2 shadow h-75"}>{book['genre']}</p>
+                {/*below this*/}
+                <b><p style={{ fontSize:'16px', marginBottom: '3px', maxWidth: '150px', wordWrap: 'break-word' }}>{book.title}</p></b>
+                <p style={{ fontSize:'12px', marginTop: '0', marginBottom: '5px', wordWrap: 'break-word'}}>{book.author}</p>
 
                 { isLibrary &&
                     <footer className={((book.owners.length - book.using.length > 0) ? "text-success" : "text-danger")}>
-                        <b>Available: {book.owners.length - book.using.length} / {book.owners.length}</b>
+                        <div className="text-center" ><b>{book.owners.length - book.using.length} / {book.owners.length}</b></div>
                     </footer>
                 }
             </div>

@@ -24,14 +24,15 @@ export default function CardDisplay({library, books, isFetching, retrieve, onCar
 
     return (
         <div>
-            <InputGroup className="pb-3">
+
+            <div className='text-center pb-3'> 
+                <h1>{library ? "Library" : "Currently Borrowing"}</h1>
+            </div>
+
+            <InputGroup className={"m-3 rounded-4 bw2 shadow"}>
                 <Form.Control placeholder="Search..." onChange={(e) => setSearchField(e.target.value)}/>
                 <Button variant='dark' disabled={isFetching} onClick={refresh}><IoReload/></Button>
             </InputGroup>
-
-            <div className='pb-3'> 
-                <h1>{library ? "Library" : "Currently Borrowing"}</h1>
-            </div>
 
             {(filteredBooks.length > 0) ?
                 filteredBooks.map((book, i) => {

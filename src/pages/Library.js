@@ -5,6 +5,7 @@ import CardDisplay from '../containers/CardDisplay'
 import BookModal from '../components/BookModal'
 import DonateForm from '../components/DonateForm'
 import ErrorBoundary from '../components/ErrorBoundary';
+import BarcodeScanner from '../components/BarcodeScanner';
 import NotFound from './NotFound'
 import { retrieveBooks as retrieving, retrieveBorrowedBooks, borrowBook as borrowing, returnBook as returning } from '../utils/Firebase'
 import { genId } from '../utils/Helpers'
@@ -52,6 +53,42 @@ function Library({ user, logout }) {
         setLoadingText("")
     }
 
+    const FloatingButton = () => {
+        return (
+          <div style={{
+            position: 'fixed',
+            bottom: '20px',
+            left: '20px',
+            zIndex: '999',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            width: '100%',
+          }}>
+            <button style={{
+              padding: '10px 20px',
+              backgroundColor: 'blue',
+              color: 'white',
+              borderRadius: '5px',
+              border: 'none',
+              cursor: 'pointer',
+            }}>Scan Book</button>
+          </div>
+        );
+      }
+    
+    const [isActive, setIsActive] = useState(false);
+    const [barcodeData, setBarcodeData] = useState(null);
+  
+    const handleScanButtonClick = () => {
+      setIsActive(prevState => !prevState); // Toggle the scanning state
+    };
+  
+    const handleBarcodeDetected = (data) => {
+      console.log('Barcode detected:', data);
+      setBarcodeData(data);
+    };
+
     const returnBook = async (book, setLoadingText) => {
         if (book.owners.length <= book.using.length) {
             setLoadingText("Working...")
@@ -65,6 +102,14 @@ function Library({ user, logout }) {
     return (
         <div className="layout">
             <Sidebar logout={logout} toggled={sidebarToggled} handleToggleSidebar={handleToggleSidebar} />
+
+            <div>
+                <BarcodeScanner isActive={isActive} onBarcodeDetected={handleBarcodeDetected} />
+                <button onClick={handleScanButtonClick}>{isActive ? 'Stop Scan' : 'Start Scan'}</button>
+                {barcodeData && <h1>Barcode content: {barcodeData}</h1>}
+            </div>
+
+            <FloatingButton></FloatingButton>
 
             <div className="library-wrapper">
                 <div className="btn-toggle mb-4" onClick={() => handleToggleSidebar(true)}>
@@ -90,7 +135,9 @@ function Library({ user, logout }) {
 
             <BookModal show={show} setShow={setShow} book={book} isLibrary={isLibrary} borrowBook={borrowBook} returnBook={returnBook}/>
         </div>
+        
     );
+    
 }
 
 export default Library;
